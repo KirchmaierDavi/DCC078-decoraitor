@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="850" viewBox="0 0 1200 850" role="img" aria-labelledby="title desc">
+  <title id="title">Diagrama de classes - Contribuição sindical com Decorator</title>
+  <desc id="desc">Diagrama de classes da implementação do padrão Decorator para benefícios sindicais.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <path d="M0,0 L10,3 L0,6 Z" fill="#333"/>
+    </marker>
+    <marker id="hollow-arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M1,1 L10,6 L1,11 Z" fill="#fff" stroke="#333" stroke-width="1.5"/>
+    </marker>
+    <style>
+      .title { font: bold 25px Arial, sans-serif; fill: #222; }
+      .class-name { font: bold 18px Arial, sans-serif; fill: #222; }
+      .interface-name { font: italic bold 18px Arial, sans-serif; fill: #222; }
+      .section { font: 15px Arial, sans-serif; fill: #222; }
+      .box { fill: #f8fbff; stroke: #24527a; stroke-width: 2; }
+      .interface-box { fill: #fff8e8; stroke: #9a6b00; stroke-width: 2; }
+      .line { fill: none; stroke: #333; stroke-width: 2; }
+      .dashed { fill: none; stroke: #555; stroke-width: 1.8; stroke-dasharray: 8 6; }
+      .label { font: 14px Arial, sans-serif; fill: #333; }
+    </style>
+  </defs>
+
+  <rect width="1200" height="850" fill="#fff"/>
+  <text x="600" y="40" text-anchor="middle" class="title">Diagrama de classes - Contribuição sindical com Decorator</text>
+
+  <!-- Interface -->
+  <rect x="410" y="75" width="380" height="130" rx="4" class="interface-box"/>
+  <text x="600" y="102" text-anchor="middle" class="label">&lt;&lt;interface&gt;&gt;</text>
+  <text x="600" y="128" text-anchor="middle" class="interface-name">ContribuicaoSindical</text>
+  <line x1="410" y1="143" x2="790" y2="143" class="line"/>
+  <text x="430" y="170" class="section">+ getDescricao() : String</text>
+  <text x="430" y="193" class="section">+ getValorMensal() : double</text>
+
+  <!-- Concrete component -->
+  <rect x="55" y="300" width="330" height="190" rx="4" class="box"/>
+  <text x="220" y="332" text-anchor="middle" class="class-name">AssociadoSindical</text>
+  <line x1="55" y1="348" x2="385" y2="348" class="line"/>
+  <text x="75" y="376" class="section">- nome : String</text>
+  <text x="75" y="399" class="section">- contribuicaoBase : double</text>
+  <line x1="55" y1="415" x2="385" y2="415" class="line"/>
+  <text x="75" y="443" class="section">+ getDescricao() : String</text>
+  <text x="75" y="466" class="section">+ getValorMensal() : double</text>
+
+  <!-- Abstract decorator -->
+  <rect x="435" y="300" width="330" height="190" rx="4" class="box"/>
+  <text x="600" y="328" text-anchor="middle" class="label">&lt;&lt;abstract&gt;&gt;</text>
+  <text x="600" y="353" text-anchor="middle" class="class-name">BeneficioSindicalDecorator</text>
+  <line x1="435" y1="368" x2="765" y2="368" class="line"/>
+  <text x="455" y="396" class="section"># associado : ContribuicaoSindical</text>
+  <line x1="435" y1="412" x2="765" y2="412" class="line"/>
+  <text x="455" y="440" class="section">+ getDescricao() : String</text>
+  <text x="455" y="463" class="section">+ getValorMensal() : double</text>
+
+  <!-- Decorators -->
+  <rect x="825" y="270" width="310" height="140" rx="4" class="box"/>
+  <text x="980" y="305" text-anchor="middle" class="class-name">PlanoSaudeDecorator</text>
+  <line x1="825" y1="320" x2="1135" y2="320" class="line"/>
+  <text x="845" y="350" class="section">+ getDescricao() : String</text>
+  <text x="845" y="375" class="section">+ getValorMensal() : double</text>
+
+  <rect x="825" y="455" width="310" height="140" rx="4" class="box"/>
+  <text x="980" y="490" text-anchor="middle" class="class-name">AssistenciaJuridicaDecorator</text>
+  <line x1="825" y1="505" x2="1135" y2="505" class="line"/>
+  <text x="845" y="535" class="section">+ getDescricao() : String</text>
+  <text x="845" y="560" class="section">+ getValorMensal() : double</text>
+
+  <rect x="435" y="625" width="330" height="140" rx="4" class="box"/>
+  <text x="600" y="660" text-anchor="middle" class="class-name">SeguroVidaDecorator</text>
+  <line x1="435" y1="675" x2="765" y2="675" class="line"/>
+  <text x="455" y="705" class="section">+ getDescricao() : String</text>
+  <text x="455" y="730" class="section">+ getValorMensal() : double</text>
+
+  <!-- Inheritance and implementation -->
+  <line x1="220" y1="300" x2="520" y2="205" class="dashed" marker-end="url(#hollow-arrow)"/>
+  <line x1="600" y1="300" x2="600" y2="205" class="dashed" marker-end="url(#hollow-arrow)"/>
+  <line x1="980" y1="270" x2="700" y2="490" class="line" marker-end="url(#hollow-arrow)"/>
+  <line x1="980" y1="455" x2="700" y2="475" class="line" marker-end="url(#hollow-arrow)"/>
+  <line x1="600" y1="625" x2="600" y2="490" class="line" marker-end="url(#hollow-arrow)"/>
+
+  <!-- Decorated component relationship -->
+  <path d="M765 395 C800 395, 800 650, 765 650" class="line" marker-end="url(#arrow)"/>
+  <text x="785" y="525" class="label">decora 1</text>
+  <text x="785" y="545" class="label">associado</text>
+</svg>
